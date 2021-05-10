@@ -14,21 +14,12 @@ let Insert = async(measurement,value)=>{
     }
   };
   
-  let SelectLast = async (measurement, column) => {
-    try{
-        let results = await client.query(
-            `select last(${column}) from ${measurement}`);
-        return results[0]
-    } catch(err){
-        console.log('err while processing $(err)')
-    }
-  };
-  
-  let Select = async (measurement,column,where) => {
+  let Select = async (param,measurement,column,where) => {
+      if(Param === 'all'){param===''}
       where = `where ${where}` || ''
     try{
         const results = await client.query(
-            `select (${column}) from ${measurement} ${where}`);
+            `select ${param}(${column}) from ${measurement} ${where}`);
         return results[0]
     } catch(err){
         console.log('err while processing $(err)')
