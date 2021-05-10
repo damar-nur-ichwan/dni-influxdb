@@ -36,4 +36,4 @@ let Insert = async(measurement,value)=>{
         console.log('err while processing $(err)')
     }
   };
-module.exports={Insert, Select, SelectLast, Delete}
+module.exports={Insert, Select, Delete}
